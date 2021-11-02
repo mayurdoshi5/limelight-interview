@@ -29,99 +29,59 @@ The solution should be purely front-end solution
 You should be using Angular 4+
 No back-end technologies (Java, C#, Python, PHP, etc)
 
-You’ll be working against a mock API, provided by: https://jsonplaceholder.typicode.com
+You’ll be working against a mock API, provided by: [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com)
 
 ## Requirements
 
-1. ### Login Page
+### 1. Login Page
 
-<ul style="margin-left: 20px">
-   <li>Use the GET users endpoint <a href="https://jsonplaceholder.typicode.com/users">https://jsonplaceholder.typicode.com/users</a></li>
-   <li>The "login" is just the user entering the email address</li>
-   <ul>
-   <li>User is logged in if the email address is found in the `/users` API </li>
-   <li>Upon failed login (email not found), display an error message</li>
-   </ul>
-   <li>After successful login, user will be in a "logged in state"
-      - Show "To Do" page as the landing page</li>
- </ul>
+- Use the GET users endpoint [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
+- The "login" is just the user entering the email address
+  - User is logged in if the email address is found in the `/users` API
+  - Upon failed login (email not found), display an error message
+- After successful login, user will be in a "logged in state"
+  - Show "To Do" page as the landing page
+   
  
 ![Sample](src/assets/readme-1.png)
 
-2. ### Navigation Bar (after login)
- <ul style="margin-left: 20px">
-   <li>Once a user is logged in, there will be a persistent navigation bar
-   </li>
-   <ol>
-       <li>Navigation links to the todo page and the posts page</li>
-       <ol type="a">
-          <li>"Posts" link on click should show a pop up saying "This page is not available"</li>
-          <li>The button linking to the todo page should have a number next to it that represents the number of incomplete todos ie TODOs (5)</li>
-       </ol>
-       <li>Display the user’s name with hyperlink to website (Company’s name), example: Leanne Graham (Romaguera-Crona) </li>
-       <li>A button to log out</li>
-       <ul>
-       <li> On click, the user should be returned to the login screen
-       </ul>
-     </ol>
-   </li>
- </ul>
+### 2. Navigation Bar (after login)
 
+Once a user is logged in, there will be a persistent navigation bar.
+
+- Navigation links to the todo page and the posts page
+  - "Posts" link on click should show a pop up saying "This page is not available"
+  - The button linking to the todo page should have a number next to it that represents the number of incomplete todos ie TODOs (5)
+- Display the user’s name with hyperlink to website (Company’s name), example: Leanne Graham (Romaguera-Crona) 
+- A button to log out
+  -  On click, the user should be returned to the login screen
+      
 ![Sample](src/assets/readme-2.png)
 
- 3. ### To Do Page
-   <ol style="margin-left: 20px">
-  <li>The “To Do” link on the navigation is highlighted</li>
-  <li>
-    Display list of To Dos (titles) for the user as checkboxes
-    <ol type="a">
-      <li>
-        If completed = false - the checkbox should be unchecked and the text
+### 3. To Do Page
+  
+  1. The “To Do” link on the navigation is highlighted
+  2. Display list of To Dos (titles) for the user as checkboxes
+      - a. If completed = false - the checkbox should be unchecked and the text
         should be red
-      </li>
-      <li>
-        If completed = true - the checkbox should be checked and the text should
+      - b. If completed = true - the checkbox should be checked and the text should
         be green
-      </li>
-    </ol>
-  </li>
-  <li>
-    In addition to the data provided by the API, the state should also store a
+  3. In addition to the data provided by the API, the state should also store a
     “completedDate” field as part of the “To Do” item
-    <ol type="a">
-      <li>If completed = false - the completedDate should be null</li>
-      <li>
-        If completed = true - generate a random or hard coded data in the past
-      </li>
-    </ol>
-  </li>
-  <li>
-    When the user clicks on an already checked box (completed item)
-    <ol>
-      <li>
-        Modify the state of the to do item to set completed = false and
+      - a. If completed = false - the completedDate should be null
+      - b. If completed = true - generate a random or hard coded data in the past
+  4. When the user clicks on an already checked box (completed item)
+      - a. Modify the state of the to do item to set completed = false and
         completedDate = null
-      </li>
-    </ol>
-  </li>
-  <li>
-    When the user clicks on an unchecked box (non-completed item), modify the
-    state of the to do item to set
-    <ol type="a">
-      <li>completed = true</li>
-      <li>completedDate = {currentDate}</li>
-    </ol>
-  </li>
-  <li>
-    Make the following filters available to the user:
-    <ol type="a">
-      <li>Show all</li>
-      <li>Show completed</li>
-      <li>Show completed today - display completed task with date of today</li>
-      <li>Show incomplete</li>
-    </ol>
-  </li>
-</ol>
+  5. When the user clicks on an unchecked box (non-completed item), modify the
+    state of the to do item to set:
+      - a. completed = true
+      - b. completedDate = {currentDate}
+  6. Make the following filters available to the user:
+      - a. Show all
+      - b. Show completed
+      - c. Show completed today - display completed task with date of today
+      - d. Show incomplete
 
 ![Sample](src/assets/readme-3.png)
 ## Rules
