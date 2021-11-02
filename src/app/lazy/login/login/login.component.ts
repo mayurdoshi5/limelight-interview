@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     templateUrl: './login.component.html',
@@ -11,7 +11,7 @@ export class LoginComponent {
 
     public constructor(private _builder: FormBuilder) {
         this.form = this._builder.group({
-            'username': this._builder.control('', Validators.required)
+            'username': this._builder.control('')
         })
     }
 

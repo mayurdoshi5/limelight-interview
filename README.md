@@ -1,7 +1,7 @@
 # Limelight - Front-End Developer Test (Angular)
 
 
->Please do not share your solution or this document over a cloud-hosted code repository. Solution can be shared through a zipped file over email or private link through file sharing systems (eg. Google Drive).
+> Please do not share your solution or this document over a cloud-hosted code repository. Solution can be shared through a zipped file over email or private link through file sharing systems (eg. Google Drive).
 
 ## Running the code
 1. `npm install`
@@ -19,26 +19,119 @@ The three main aspects that we will be assessing are: [see Implementation Notes]
 2. State management & storage
 3. UI/UX (styling code management)
 
-
 You are encouraged to add notes to the bottom of this README, or in a separate file that may contain:
-- Step-by-step on how to run / execute your solution (if applicable)
-- Any assumptions that you may have made
-- Any other thoughts / design / architectural decisions that you may have made
 
+-   Step-by-step on how to run / execute your solution (if applicable)
+-   Any assumptions that you may have made
+-   Any other thoughts / design / architectural decisions that you may have made
 
 The solution should be purely front-end solution
 You should be using Angular 4+
 No back-end technologies (Java, C#, Python, PHP, etc)
 
-
 You’ll be working against a mock API, provided by: https://jsonplaceholder.typicode.com
 
+## Requirements
+
+1. ### Login Page
+
+<ul style="margin-left: 20px">
+   <li>Use the GET users endpoint <a href="https://jsonplaceholder.typicode.com/users">https://jsonplaceholder.typicode.com/users</a></li>
+   <li>The "login" is just the user entering the email address</li>
+   <ul>
+   <li>User is logged in if the email address is found in the `/users` API </li>
+   <li>Upon failed login (email not found), display an error message</li>
+   </ul>
+   <li>After successful login, user will be in a "logged in state"
+      - Show "To Do" page as the landing page</li>
+ </ul>
+ 
+![Sample](src/assets/readme-1.png)
+
+2. ### Navigation Bar (after login)
+ <ul style="margin-left: 20px">
+   <li>Once a user is logged in, there will be a persistent navigation bar
+   </li>
+   <ol>
+       <li>Navigation links to the todo page and the posts page</li>
+       <ol type="a">
+          <li>"Posts" link on click should show a pop up saying "This page is not available"</li>
+          <li>The button linking to the todo page should have a number next to it that represents the number of incomplete todos ie TODOs (5)</li>
+       </ol>
+       <li>Display the user’s name with hyperlink to website (Company’s name), example: Leanne Graham (Romaguera-Crona) </li>
+       <li>A button to log out</li>
+       <ul>
+       <li> On click, the user should be returned to the login screen
+       </ul>
+     </ol>
+   </li>
+ </ul>
+
+![Sample](src/assets/readme-2.png)
+
+ 3. ### To Do Page
+   <ol style="margin-left: 20px">
+  <li>The “To Do” link on the navigation is highlighted</li>
+  <li>
+    Display list of To Dos (titles) for the user as checkboxes
+    <ol type="a">
+      <li>
+        If completed = false - the checkbox should be unchecked and the text
+        should be red
+      </li>
+      <li>
+        If completed = true - the checkbox should be checked and the text should
+        be green
+      </li>
+    </ol>
+  </li>
+  <li>
+    In addition to the data provided by the API, the state should also store a
+    “completedDate” field as part of the “To Do” item
+    <ol type="a">
+      <li>If completed = false - the completedDate should be null</li>
+      <li>
+        If completed = true - generate a random or hard coded data in the past
+      </li>
+    </ol>
+  </li>
+  <li>
+    When the user clicks on an already checked box (completed item)
+    <ol>
+      <li>
+        Modify the state of the to do item to set completed = false and
+        completedDate = null
+      </li>
+    </ol>
+  </li>
+  <li>
+    When the user clicks on an unchecked box (non-completed item), modify the
+    state of the to do item to set
+    <ol type="a">
+      <li>completed = true</li>
+      <li>completedDate = {currentDate}</li>
+    </ol>
+  </li>
+  <li>
+    Make the following filters available to the user:
+    <ol type="a">
+      <li>Show all</li>
+      <li>Show completed</li>
+      <li>Show completed today - display completed task with date of today</li>
+      <li>Show incomplete</li>
+    </ol>
+  </li>
+</ol>
+
+![Sample](src/assets/readme-3.png)
 ## Rules
+
 1. You may not delete any files
 2. You may add as many files as you'd like
-   > **Note**: You are encouraged to add files to enhance your solution. This repo only provides the basics to allow you to get started.
+    > **Note**: You are encouraged to add files to enhance your solution. This repo only provides the basics to allow you to get started.
 3. You may not delete any code that already exists.
-4. You may edit any file except the files in the [model](src/app/models/) directory
+4. You may edit any file in the `src` directory except the files in the [model](src/app/models/) directory
+
 ## Implementation Notes
 
 ### API Management
@@ -55,14 +148,16 @@ The documentation for ngxs can be found [here](https://www.ngxs.io/).
 
 Two NGXS states have been preconfigured for you, [user.state](src/app/store/user.state.ts) and [todo.state](src/app/store/todo.state.ts), along with sample action classes in the same directory. You will add selectors and actions to each to manage your state.
 
-
 #### Models
+
 There are a couple of model files in the [models](src/app/models/) directory. **These files are not to be edited**. Use the structure they provide to inform how you structure your states and selectors
 
 #### User State
+
 [The user state](src/app/store/user.state.ts) holds information about the logged in user.The actions to mutate this state should be added [here](src/app/store/user.action.ts)
 
 #### Todo State
+
 [The todos state](src/app/store/todo.state.ts) holds information about the list of todos. The actions to mutate this state should be added [here](src/app/store/todo.action.ts)
 
 #### Miscellaneous
