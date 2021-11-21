@@ -12,7 +12,7 @@ const routes: Route[] = [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'posts'
+                redirectTo: 'todos'
             },
             {
                 path: 'todos',

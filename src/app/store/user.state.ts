@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { UserModel } from '@lct/models/user.model';
 import { User } from '@lct/store/user.actions';
+import { IUserInfo } from '@lct/models/userinfo.model';
 
-interface UserStateModel extends UserModel {}
+interface UserStateModel extends UserModel, IUserInfo {}
 
 type UserContext = StateContext<UserStateModel>;
 
@@ -24,6 +25,15 @@ export class UserState {
 
     @Action(User.Initialize)
     public initialize(ctx: UserContext, action: User.Initialize): void {
-
+        ctx.setState(action.user);
     }
+
+    @Selector()
+    static getUserData(state: UserStateModel) {
+        return state;
+    }
+
+   
 }
+
+

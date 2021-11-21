@@ -31,6 +31,23 @@ export class ApiService {
         return this._execute<T>('PUT', environment.api + url, data, params);
     }
 
+    public authenticate<String>(username: string): Observable<any> {
+        return this._execute('GET', environment.api + '/users' , void 0).pipe(map(
+            (data: any) => {
+                let flag = {info: 'Email not found', user: {}};
+                if (!!data) {
+                    
+                    const userObj = data.find(d => d.email.toLowerCase() === username.toLowerCase());
+                    if (!!userObj) {
+                        flag.info = 'Email found';
+                        flag.user = {...userObj};
+                    }
+                }
+                return flag;
+            }
+        ));
+    }
+
     private _execute<T>(
         method: string,
         url: string,
@@ -57,4 +74,5 @@ export class ApiService {
     private _handleErrors(value: any): Observable<any> {
         throw value;
     }
+    
 }

@@ -1,0 +1,24 @@
+ul {
+  list-style: none;
+}
+
+li.completed {
+  color: green
+}
+
+li.incompleted {
+  color: red
+}
+
+.todo-item > * {
+  margin-right: 1rem;
+}
+
+.filter-btn {
+  color: #d3d3d3;
+
+}
+
+.active-filter-btn {
+  color: #333 !important;
+}

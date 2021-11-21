@@ -4,4 +4,9 @@ export namespace User {
 
         public constructor(public user: any) {}
     }
+
+    export class GetUser {
+        public static readonly type: string = '[User] Get';
+    }
+
 }
