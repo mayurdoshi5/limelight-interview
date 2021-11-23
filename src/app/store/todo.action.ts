@@ -13,4 +13,8 @@ export namespace Todo {
 
         constructor(public payload: TodoModel) { }
     }
+
+    export class clearTodo {
+        public static readonly type: string = '[Todo] Clear';
+    }
 }

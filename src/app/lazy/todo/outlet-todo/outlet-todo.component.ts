@@ -4,6 +4,9 @@ import { TodoState } from '@lct/store/todo.state';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Todo } from '@lct/store/todo.action';
+import { FilterState } from '@lct/store/filter.state';
+import { FilterTodo } from '@lct/store/filter.action';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 @Component({
     selector: 'outlet-todo',
     templateUrl: './outlet-todo.component.html',
@@ -13,7 +16,8 @@ export class OutletTodoComponent {
     @Select(TodoState.todos)
     todos: Observable<any[]>;
 
-    filter = 'All';
+    @Select(FilterState.getFilter)
+    filter$: Observable<string>;
 
     constructor(private store: Store) { }
 
@@ -21,5 +25,8 @@ export class OutletTodoComponent {
         this.store.dispatch(new Todo.ToggleTodo(todo));
     }
 
+    updateFilterState(event: MatButtonToggleGroup) {
+        this.store.dispatch(new FilterTodo(event.value));
+    }
 
 }

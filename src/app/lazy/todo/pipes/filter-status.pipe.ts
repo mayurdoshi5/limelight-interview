@@ -7,7 +7,7 @@ import { TodoModel } from '@lct/models/todo.model';
 export class FilterStatusPipe implements PipeTransform {
 
   transform(value: TodoModel[], args: string): unknown {
-    if (args === '' || args === 'All') {
+    if (args === undefined || args === '' || args === 'All') {
       return value;
     } else if (args === 'Completed') {
       return value.filter(d => d.completed);

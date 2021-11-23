@@ -22,3 +22,15 @@ li.incompleted {
 .active-filter-btn {
   color: #333 !important;
 }
+.main-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toggle-button-grp {
+  width:30vw;
+   margin:1%
+}
+.toggle-button-grp mat-button-toggle {
+  width: 100%;
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OutletTodoComponent } from './outlet-todo/outlet-todo.component';
 import { FilterStatusPipe } from './pipes/filter-status.pipe';
 import { MaterialModule } from '@lct/ui/material.module';
+import { FormsModule } from '@angular/forms';
 
 const COMPONENTS = [OutletTodoComponent];
 
@@ -14,7 +15,8 @@ const COMPONENTS = [OutletTodoComponent];
     exports: [...COMPONENTS],
     imports: [
         CommonModule,
-        MaterialModule
+        MaterialModule,
+        FormsModule
     ]
 })
 export class TodoModule { }

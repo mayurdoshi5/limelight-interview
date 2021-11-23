@@ -9,4 +9,7 @@ export namespace User {
         public static readonly type: string = '[User] Get';
     }
 
+    export class clearUser {
+        public static readonly type: string = '[Todo] Clear';
+    }
 }

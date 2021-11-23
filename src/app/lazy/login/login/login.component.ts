@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '@lct/api/api.service';
+import { LogIn } from '@lct/store/auth.action';
 import { User } from '@lct/store/user.actions';
 import { Store } from '@ngxs/store';
 import { first } from 'rxjs/operators';
@@ -10,20 +11,26 @@ import { first } from 'rxjs/operators';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     public form: FormGroup;
     public emailNotFound = false;
+    public submitted = false;
     public constructor(private _builder: FormBuilder,
         private _apiService: ApiService,
         private router: Router,
         private store: Store) {
         this.form = this._builder.group({
-            'username': this._builder.control('')
+            username: ['', [Validators.required, Validators.email]]
         })
+
+    }
+    ngOnInit(): void {
+
     }
 
     public submit(): void {
+        this.submitted = true;
         if (this.form.invalid) {
             return;
         }
@@ -31,8 +38,8 @@ export class LoginComponent {
         this._apiService.authenticate(this.form.value.username).pipe(first())
             .subscribe(data => {
                 if (data.info !== 'Email not found') {
+                    this.store.dispatch(new LogIn(this.form.value.username));
                     this.store.dispatch(new User.Initialize(data.user));
-                    localStorage.setItem('userLoggedIn', JSON.stringify(data.user));
                     this.router.navigate(['dashboard']);
                 } else {
                     this.emailNotFound = true;

@@ -1,18 +1,16 @@
-<div class="example-button-row">
-    <button mat-button class="filter-btn" [class.active-filter-btn]="filter === 'All'" (click)="filter = 'All'"
-        [disabled]="filter === 'All' ? true: false">All</button>
-    <button mat-button [class.active-filter-btn]="filter === 'Completed'" class="filter-btn"
-        (click)="filter = 'Completed'" [disabled]="filter === 'Completed' ? true: false">Completed</button>
-    <button mat-button [class.active-filter-btn]="filter === 'Completed Today'" class="filter-btn"
-        (click)="filter = 'Completed Today'" [disabled]="filter === 'Completed Today' ? true: false">Completed
-        Today</button>
-    <button mat-button [class.active-filter-btn]="filter === 'Incomplete'" class="filter-btn"
-        (click)="filter = 'Incomplete'" [disabled]="filter === 'Incomplete' ? true: false">Incomplete</button>
+<div class="main-button">
+    <mat-button-toggle-group (change)="updateFilterState($event)" [value]="(filter$ | async)" name="filter"
+        aria-label="filter todos" class="toggle-button-grp">
+        <mat-button-toggle value="All">All</mat-button-toggle>
+        <mat-button-toggle value="Completed">Completed</mat-button-toggle>
+        <mat-button-toggle value="Completed Today">Completed Today</mat-button-toggle>
+        <mat-button-toggle value="Incomplete">Incomplete</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>
 <mat-divider></mat-divider>
 <ul *ngIf="(todos | async).length > 0">
     <li class="todo-item" [class.completed]="todo.completed" [class.incompleted]="!todo.completed"
-        *ngFor="let todo of todos | async | filterStatus: filter">
+        *ngFor="let todo of todos | async | filterStatus: (filter$ | async)">
         <mat-checkbox color="primary" [checked]="todo.completed" (change)="toggleTodoCheckBox(todo)">{{ todo.title }}
         </mat-checkbox>
     </li>

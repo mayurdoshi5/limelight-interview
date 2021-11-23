@@ -9,6 +9,9 @@ import { UserState } from '@lct/store/user.state';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { TodoState } from '@lct/store/todo.state';
+import { AuthState } from '@lct/store/auth.state';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { FilterState } from '@lct/store/filter.state';
 
 const COMPONENTS = [
     BodyComponent
@@ -26,7 +29,10 @@ const COMPONENTS = [
         RouterModule,
         MainRoutingModule,
         HttpClientModule,
-        NgxsModule.forRoot([ UserState, TodoState ]),
+        NgxsModule.forRoot([UserState, TodoState, AuthState, FilterState ]),
+        NgxsStoragePluginModule.forRoot({
+            key: [UserState, TodoState, AuthState, FilterState]
+        }),
         NgxsLoggerPluginModule.forRoot(),
         NgxsReduxDevtoolsPluginModule.forRoot()
     ],

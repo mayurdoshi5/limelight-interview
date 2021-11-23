@@ -33,7 +33,16 @@ export class UserState {
         return state;
     }
 
-   
+   @Action(User.clearUser)
+   clearUser(ctx: UserContext, action: User.Initialize) {
+      ctx.setState({
+          id: -1,
+          name: '',
+          phone: '',
+          username: '',
+          email: ''
+      });
+   }
 }
 
 

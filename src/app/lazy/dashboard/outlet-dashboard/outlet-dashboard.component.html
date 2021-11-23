@@ -1,16 +1,16 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="(authenticated$ | async)">
     <div>
         <button mat-button class="posts-btn" (click)="redirectLink()">Posts</button>
         <button mat-raised-button color="accent" class="todos-btn" >Todos ({{ incompleteTodo$ | async }})</button>
     </div>
     <div>
-        <span *ngIf="user$ | async as user">{{user.name}} (<a [href]="'http://' +user.website"
-             class="redirect"   target="_blank">{{user.company.name}}</a>)</span>
+        <span class="company_details" *ngIf="user$ | async as user"><a [href]="'http://' +user.website" class="redirect" target="_blank">{{user.name}}</a>
+             ({{user.company.name}})</span>
         <button mat-raised-button (click)="logout()">Log Out</button>
     </div>
  
 </mat-toolbar>
-<div class="main-area">
+<div class="main-area" *ngIf="(authenticated$ | async)">
     <mat-card class="mat-elevation-z4">
         <router-outlet></router-outlet>
     </mat-card>

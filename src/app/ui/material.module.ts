@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 const MODULES = [
     MatToolbarModule,
     MatButtonModule,
@@ -16,7 +17,8 @@ const MODULES = [
     MatCardModule,
     MatSnackBarModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonToggleModule
 ];
 
 @NgModule({

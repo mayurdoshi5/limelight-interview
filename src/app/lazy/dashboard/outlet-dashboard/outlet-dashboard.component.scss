@@ -5,6 +5,10 @@ mat-toolbar {
     .posts-btn {
         margin-right: 1rem;
     }
+    .company_details {
+        font-size: 13px;
+        margin-right: 5px;
+    }
     .redirect {
         color: #fff;
     }
@@ -14,6 +18,6 @@ mat-toolbar {
     margin: 4rem;
 
     mat-card {
-
+        padding-top: 5px;
     }
 }
